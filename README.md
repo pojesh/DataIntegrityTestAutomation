@@ -40,19 +40,19 @@ It uses a **data-driven** approach: for each loan applicant in `Test Data.xlsx`,
 
 
 ## 4. Project Structure
-
+```
 DataIntegrityTestAutomation/
 ├── Data/
 │ ├── Loan Applications.accdb # Master loan database
 │ └── Test Data.xlsx # Test case inputs
 ├── Verify_Loan_Data.xaml # Main test workflow
 └── project.json # Project definition
-
+```
 
 ## 5. Workflow Breakdown (Verify_Loan_Data.xaml)
 
 The workflow structure is as follows:
-
+```
 Main Test Case Sequence
 ├── Arguments:
 │ ├── User_ID
@@ -77,7 +77,7 @@ Main Test Case Sequence
 │ └── Else:
 │ └── Throw BusinessRuleException ("User not found")
 └── Disconnect from Database
-
+```
 
 ## 6. Setup & Configuration
 
