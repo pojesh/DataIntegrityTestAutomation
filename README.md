@@ -1,7 +1,7 @@
 # Data Integrity Test Automation
 
 **Author:** Pojesh  
-**Technology Stack:** UiPath Studio, Microsoft Access (.accdb)
+**Technology Stack:** UiPath Studio
 
 ---
 
@@ -90,7 +90,7 @@ Main Test Case Sequence
 2. **Open** the root folder in UiPath Studio.
 3. **Install Dependencies** via Manage Packages if not auto-restored.
 4. **Check Data Files**: Ensure both `Loan Applications.accdb` and `Test Data.xlsx` are present in the `Data/` folder.
-5. **Modify Connection Strings**: Update database paths if needed (they may be absolute).
+5. **Modify Connection Strings**: Update database paths as they are absolute paths.
 
 ---
 
