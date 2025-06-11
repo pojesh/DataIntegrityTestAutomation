@@ -1,81 +1,95 @@
-Data Integrity Test Automation
-Project Author: Pojesh
+🧪 Data Integrity Test Automation
+Author: Pojesh
+Technology: UiPath Test Automation
 
-1. Project Overview
-This UiPath Test Automation project is designed to perform data integrity checks between a set of test data in an Excel file and a master loan application database. The primary goal is to ensure that key information for loan applicants is consistent across both data sources.
+📌 Project Overview
+This UiPath automation project validates data integrity between a test dataset in Excel and a master Microsoft Access loan application database.
 
-The process operates as a data-driven test case. For each applicant listed in the Test Data.xlsx file, it queries the Loan Applications.accdb database using the UserID and verifies that the LastName and LoanAmountRequested fields match their expected values.
-2. Features
-Data-Driven: The test is driven by the entries in Test Data.xlsx, allowing for easy addition or modification of test cases without changing the workflow.
-Database Integration: Connects to a Microsoft Access (.accdb) database to retrieve live data for comparison.
-Automated Verification: Uses UiPath's testing activities to programmatically assert that data values are correct.
-Detailed Logging:
-Generates specific error messages upon verification failure.
-Provides informational logs for each successful verification.
-Independent Test Execution: Each row in the Excel file is treated as a separate test variation, ensuring all records are checked regardless of individual failures.
-3. Prerequisites
-UiPath Studio (v2022.10 or later recommended)
-The following UiPath Activity Packages installed:
+It operates as a data-driven test:
+For each loan applicant listed in Test Data.xlsx, it queries the Loan Applications.accdb database using the UserID and verifies whether LastName and LoanAmountRequested match expected values.
+
+🚀 Features
+🔁 Data-Driven Testing
+Easily extend or modify test cases via Test Data.xlsx—no workflow changes required.
+
+🗃️ Database Integration
+Connects directly to an .accdb Access database to fetch and compare live data.
+
+✅ Automated Verification
+Leverages UiPath’s testing activities to assert that records match.
+
+📋 Detailed Logging
+
+Informational logs on successful verifications
+
+Specific error messages on failures
+
+🧷 Independent Test Execution
+Each Excel row is treated as a separate test variation. Execution continues even if some rows fail.
+
+📦 Prerequisites
+UiPath Studio – Version 2022.10 or later recommended
+
+Install these Activity Packages via Manage Packages:
+
 UiPath.Testing.Activities
+
 UiPath.Database.Activities
-4. Project Structure
-The project follows a standard structure:
 
+🗂️ Project Structure
+bash
+Copy
+Edit
 DataIntegrityTestAutomation/
-│
 ├── Data/
-│   ├── Loan Applications.accdb     # The master database file.
-│   └── Test Data.xlsx              # The Excel file containing test cases.
-│
-├── Verify_Loan_Data.xaml           # The main data-driven test case workflow.
-└── project.json                    # The project definition file.
-5. Workflow Activity Structure (Verify_Loan_Data.xaml)
-The following outlines the hierarchical structure of the activities within the main test case sequence. The entire sequence is executed for each data row from the test file.
-
+│   ├── Loan Applications.accdb     # Master loan database
+│   └── Test Data.xlsx              # Test cases
+├── Verify_Loan_Data.xaml           # Main test workflow
+└── project.json                    # UiPath project configuration
+🧩 Workflow Breakdown — Verify_Loan_Data.xaml
 Main Test Case Sequence
-|
-+-- Arguments (User_ID, Given_Name, Last_Name, Occupation, Age, Loan_Amount, Yearly_Income)
-|
-+-- Variables (dbConnection, queryResult)
-|
-+-- Given (Sequence)
-|   |
-|   +-- Connect to Database (Output: dbConnection)
-|
-+-- When (Sequence)
-|   |
-|   +-- Execute Query (Input: dbConnection, SQL with User_ID parameter; Output: queryResult)
-|
-+-- Then (Sequence)
-|   |
-|   +-- If (Condition: queryResult.Rows.Count > 0)
-|       |
-|       +-- Then (Sequence)
-|       |   +-- Verify Expression (Check Last Name)
-|       |   +-- Log Message (Success for Last Name)
-|       |   +-- Verify Expression (Check Loan Amount)
-|       |   +-- Log Message (Success for Loan Amount)
-|       |
-|       +-- Else (Sequence)
-|           +-- Throw (BusinessRuleException for "User not found")
-|
-+-- Disconnect from Database (Input: dbConnection)
-6. Setup and Configuration
-Clone/Download: Place the project folder on your local machine.
-Open Project: Open the root folder in UiPath Studio.
-Install Dependencies: Studio should prompt you to restore dependencies. If not, open Manage Packages and ensure all required packages from the Prerequisites section are installed.
-Check Data Files: Confirm that the Data folder exists and contains both Loan Applications.accdb and Test Data.xlsx. The database connection string uses absolute paths, so modify them before execution.
-7. How to Run the Test Case
-Open the Verify_Loan_Data.xaml file in UiPath Studio.
-In the top ribbon, click "Run".
-8. Understanding the Output
-The results of the test run will be displayed in the Output panel.
+plaintext
+Copy
+Edit
+Main Sequence
+├── Arguments: User_ID, Given_Name, Last_Name, Occupation, Age, Loan_Amount, Yearly_Income
+├── Variables: dbConnection, queryResult
+├── Given (Connect to database)
+├── When (Execute SQL query using User_ID)
+├── Then
+│   ├── If (Result found?)
+│   │   ├── ✔ Verify Last Name
+│   │   ├── ✔ Log Success
+│   │   ├── ✔ Verify Loan Amount
+│   │   └── ✔ Log Success
+│   └── Else (Throw "User not found" exception)
+└── Finally: Disconnect from Database
+⚙️ Setup & Configuration
+Clone/Download this repository.
 
-A Passed Test: A successful verification will result in a Info log message being printed.
-A Failed Test: If a verification fails, an Error message will be logged with the specific details you configured in the OutputMessageFormat property. The execution for that data row will stop, and the test runner will move on to the next row.
+Open Project in UiPath Studio (.xaml or folder).
 
+Restore Dependencies if prompted, or install them manually.
 
+Verify Data Files
+Ensure the Data/ folder contains:
 
+Loan Applications.accdb
 
+Test Data.xlsx
 
+Update Connection Strings
+Database connections may use absolute paths—update them before running.
+
+▶️ Running the Test Case
+Open Verify_Loan_Data.xaml in UiPath Studio.
+
+Click Run in the top ribbon.
+
+📊 Output and Test Results
+✅ Pass: Successful checks log Info messages in the Output panel.
+
+❌ Fail: Failed checks log Error messages with clear failure reasons.
+
+Execution continues for remaining data rows even after individual failures.
 
