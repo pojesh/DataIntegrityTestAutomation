@@ -1,0 +1,12 @@
+{
+  "Workflows": [
+    {
+      "Path": "Verify_Loan_Data.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    }
+  ]
+}
