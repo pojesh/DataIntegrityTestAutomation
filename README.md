@@ -11,7 +11,6 @@ This UiPath automation project performs data integrity testing between a test da
 
 It uses a **data-driven** approach: for each loan applicant in `Test Data.xlsx`, the workflow queries `Loan Applications.accdb` using `UserID` and checks whether the `LastName` and `LoanAmountRequested` match expected values.
 
----
 
 ## 2. Features
 
@@ -31,7 +30,6 @@ It uses a **data-driven** approach: for each loan applicant in `Test Data.xlsx`,
 - **Independent Test Execution**  
   Each row in the Excel file is treated as a separate test case. Execution continues even if some records fail.
 
----
 
 ## 3. Prerequisites
 
@@ -40,7 +38,6 @@ It uses a **data-driven** approach: for each loan applicant in `Test Data.xlsx`,
   - `UiPath.Testing.Activities`
   - `UiPath.Database.Activities`
 
----
 
 ## 4. Project Structure
 
@@ -51,7 +48,6 @@ DataIntegrityTestAutomation/
 ├── Verify_Loan_Data.xaml # Main test workflow
 └── project.json # Project definition
 
----
 
 ## 5. Workflow Breakdown (Verify_Loan_Data.xaml)
 
@@ -82,7 +78,6 @@ Main Test Case Sequence
 │ └── Throw BusinessRuleException ("User not found")
 └── Disconnect from Database
 
----
 
 ## 6. Setup & Configuration
 
@@ -92,14 +87,12 @@ Main Test Case Sequence
 4. **Check Data Files**: Ensure both `Loan Applications.accdb` and `Test Data.xlsx` are present in the `Data/` folder.
 5. **Modify Connection Strings**: Update database paths as they are absolute paths.
 
----
 
 ## 7. How to Run
 
 1. Open `Verify_Loan_Data.xaml` in UiPath Studio.
 2. Click **Run** from the ribbon or use **Test Explorer**.
 
----
 
 ## 8. Test Output
 
